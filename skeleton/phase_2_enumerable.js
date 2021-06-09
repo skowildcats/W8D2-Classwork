@@ -7,7 +7,6 @@ Array.prototype.myEach = function(callback){
 Array.prototype.myMap = function(callback){
     let res = [];
     // res.push(this.myEach(callback));
-    debugger
     this.myEach(element => {
         res.push(callback(element)); //callback function for myEach
         }
@@ -25,7 +24,21 @@ function timesTwo(num){
     console.log(x);
 }
 
-Array.prototype.myReduce = function(callback,[initialValue]){
+Array.prototype.myReduce = function(callback, initialValue){
+    if (initialValue === undefined) {
+        initialValue = 0;
+    }
 
+    let res = initialValue;
+    // debugger
+    
 
+    this.myEach(element => {
+        res = callback(res, element); 
+        // function(acc, el) { return acc + el}
+        }
+    );
+
+    return res;
 }
+
